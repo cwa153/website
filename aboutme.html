@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .popup-container {
+            background: rgba(27, 27, 27, 0.85);
+            padding: 2rem;
+            border-radius: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            width: 100%;
+            color: white;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .left-section {
+            flex: 1 1 60%;
+            min-width: 280px;
+            padding-right: 1rem;
+        }
+
+        .left-section h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        span {
+            color: #7cf03d;
+        }
+
+        .left-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .right-section {
+            flex: 1 1 35%;
+            min-width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-section img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .popup-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .left-section {
+                padding-right: 0;
+            }
+
+            .left-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .left-section p {
+                font-size: 0.95rem;
+            }
+
+            .right-section {
+                margin-top: 1.5rem;
+            }
+
+            .right-section img {
+                max-width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popup-container {
+                padding: 1rem;
+            }
+
+            .left-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .left-section p {
+                font-size: 0.9rem;
+            }
+
+            .popup-close {
+                width: 26px;
+                height: 26px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="popup-container">
+        <button class="popup-close" onclick="redirectToHome()">×</button>
+
+        <div class="left-section">
+            <h2>ABOUT <span>ME</span></h2>
+            <p>
+                My name is Aditya Kumar Singh, and I hail from Nalanda, Bihar. I hold a Bachelor of Technology (B.Tech)
+                degree with a specialization in Information Technology from Bengal College of Engineering and Technology
+                (BCET), affiliated with Maulana Abul Kalam Azad University of Technology (MAKAUT), West Bengal—
+                formerly known as WBUT. I successfully completed my B.Tech with a Cumulative Grade Point Aggregate
+                (CGPA) of 7.90.
+            </p>
+            <p>
+                Prior to my graduation, I completed my Diploma in Engineering from Dr. B.C. Roy Polytechnic, Durgapur
+                (West Bengal)with an excellent score of 80%. I also completed my Madhyamik (10th grade) from DAV Model
+                School,Durgapur (West Bengal),securing 57%.
+            </p>
+            <p>
+                In terms of technical proficiency, I have developed a solid foundation in programming languages such as
+                C, C++, and Java, as well as essential database and web technologies including DBMS,MySQL,HTML and CSS.
+            </p>
+            <p>
+                Apart from academics, I have a strong interest in sports and athletics, particularly cricket and track &
+                field activities, which help me stay active and maintain team spirit and discipline.
+            </p>
+            <p>
+                My mother's name is Archana Singh and my father's name is Amaresh Kumar.
+            </p>
+        </div>
+
+        <div class="right-section">
+            <img src="./assets/photo2.jpeg" alt="My Photo">
+        </div>
+    </div>
+
+    <script>
+        function redirectToHome() {
+            window.location.href = "index.html";
+        }
+
+    // Disable Right Click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    // Disable Common Dev Tools Shortcuts
+    document.addEventListener('keydown', function (e) {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    // Obfuscation Example (basic)
+    (function() {
+      const msg = "Thanks for your interest!";
+      console.log(msg);
+    })();
+    </script>
+</body>
+
+</html>

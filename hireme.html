@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me Form</title>
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #2c3e50;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .form-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-in-out 0.3s both;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .optional {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            font-weight: normal;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        .submit-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-group button {
+            flex: 1;
+        }
+
+        .email-btn {
+            background-color: var(--secondary-color);
+        }
+
+        .email-btn:hover {
+            background-color: #1a252f;
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .success {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success-color);
+            display: block;
+        }
+
+        .error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--error-color);
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .form-body {
+                padding: 20px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .submit-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .form-header {
+                padding: 15px;
+            }
+
+            .form-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .status {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+
+        /* Responsive star */
+        .responsive-star {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            clip-path: polygon(50% 0%,
+                    61% 35%,
+                    98% 35%,
+                    68% 57%,
+                    79% 91%,
+                    50% 70%,
+                    21% 91%,
+                    32% 57%,
+                    2% 35%,
+                    39% 35%);
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .responsive-star {
+                display: block;
+            }
+        }
+
+        /* Form validation styles */
+        .valid {
+            border-color: var(--success-color) !important;
+        }
+
+        .invalid {
+            border-color: var(--error-color) !important;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .coffee-btn {
+            background-color: #FFDD00;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .coffee-btn:hover {
+            background-color: #ffc107;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>Hire Me</h1>
+            <p>Get in touch for your next project</p>
+        </div>
+        <div class="form-body">
+            <form id="hireForm">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="name">
+                    <div class="error-message" id="nameError">Please enter your name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="email id">
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="optional">(optional)</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 234 567 8900">
+                </div>
+
+                <div class="form-group">
+                    <label for="project">Project Type *</label>
+                    <select id="project" name="project" required>
+                        <option value="" disabled selected>Select your project</option>
+                        <option value="website">Frontend Development</option>
+                        <option value="app">Backend Development</option>
+                        <option value="design">Full Stack Web Development</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message" id="projectError">Please select a project type</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget *</label>
+                    <select id="budget" name="budget" required>
+                        <option value="" disabled selected>Select your budget</option>
+                        <option value="under-5k">Under ₹5,000</option>
+                        <option value="5k-10k">₹5,000 - ₹10,000</option>
+                        <option value="10k-20k">₹10,000 - ₹20,000</option>
+                        <option value="25k-plus">₹25,000+</option>
+                        <option value="undecided">Not sure yet</option>
+                    </select>
+                    <div class="error-message" id="budgetError">Please select a budget range</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Project Details *</label>
+                    <textarea id="message" name="message" required
+                        placeholder="Tell me about your project..."></textarea>
+                    <div class="error-message" id="messageError">Please describe your project</div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="submit-btn" id="emailBtn">
+                        Send via Email
+                    </button>
+                    <button type="button" class="submit-btn coffee-btn" id="coffeeBtn">
+                        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="coffee"
+                            style="height: 20px; vertical-align: middle; margin-right: 8px;">
+                        Buy Me a Coffee
+                    </button>
+
+                </div>
+
+                <div class="status" id="status"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('hireForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const projectInput = document.getElementById('project');
+            const budgetInput = document.getElementById('budget');
+            const messageInput = document.getElementById('message');
+            const emailBtn = document.getElementById('emailBtn');
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const statusDiv = document.getElementById('status');
+
+            // Validation for inputs
+            [nameInput, emailInput, projectInput, budgetInput, messageInput].forEach(input => {
+                input.addEventListener('blur', validateField);
+                input.addEventListener('input', clearError);
+            });
+
+            function validateField(e) {
+                const field = e.target;
+                const errorId = field.id + 'Error';
+                const errorElement = document.getElementById(errorId);
+
+                if (field.required && !field.value.trim()) {
+                    field.classList.add('invalid');
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+
+                if (field.type === 'email' && !validateEmail(field.value)) {
+                    field.classList.add('invalid');
+                    errorElement.style.display = 'block';
+                    errorElement.textContent = 'Please enter a valid email address';
+                    return false;
+                }
+
+                field.classList.remove('invalid');
+                field.classList.add('valid');
+                errorElement.style.display = 'none';
+                return true;
+            }
+
+            function clearError(e) {
+                const field = e.target;
+                const errorId = field.id + 'Error';
+                const errorElement = document.getElementById(errorId);
+
+                field.classList.remove('invalid');
+                errorElement.style.display = 'none';
+            }
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function validateForm() {
+                let isValid = true;
+
+                if (!nameInput.value.trim()) {
+                    nameInput.classList.add('invalid');
+                    document.getElementById('nameError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (!emailInput.value.trim() || !validateEmail(emailInput.value)) {
+                    emailInput.classList.add('invalid');
+                    document.getElementById('emailError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (!projectInput.value) {
+                    projectInput.classList.add('invalid');
+                    document.getElementById('projectError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (!budgetInput.value) {
+                    budgetInput.classList.add('invalid');
+                    document.getElementById('budgetError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (!messageInput.value.trim()) {
+                    messageInput.classList.add('invalid');
+                    document.getElementById('messageError').style.display = 'block';
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            function getFormData() {
+                return {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    project: projectInput.value,
+                    budget: budgetInput.value,
+                    message: messageInput.value.trim()
+                };
+            }
+
+            function resetForm() {
+                form.reset();
+                [nameInput, emailInput, projectInput, budgetInput, messageInput].forEach(input => {
+                    input.classList.remove('valid', 'invalid');
+                });
+
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                    statusDiv.className = 'status';
+                }, 3000);
+            }
+
+            function showStatus(message, isSuccess) {
+                statusDiv.textContent = message;
+                statusDiv.className = isSuccess ? 'status success' : 'status error';
+                statusDiv.style.display = 'block';
+            }
+
+            // Email button click handler
+            emailBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const formData = getFormData();
+
+                // In a real implementation, you would use AJAX to send to a server
+                const mailtoLink = `mailto:chiku042151173@gmail.com?subject=Hire%20Request%20from%20${encodeURIComponent(formData.name)}&body=Name:%20${encodeURIComponent(formData.name)}%0AEmail:%20${encodeURIComponent(formData.email)}%0APhone:%20${encodeURIComponent(formData.phone || 'Not provided')}%0AProject:%20${encodeURIComponent(formData.project)}%0ABudget:%20${encodeURIComponent(formData.budget)}%0AMessage:%20${encodeURIComponent(formData.message)}`;
+
+                window.location.href = mailtoLink;
+
+                showStatus('Email compose window opened successfully!', true);
+                resetForm();
+            });
+
+            // WhatsApp button click handler
+            //      whatsappBtn.addEventListener('click', function (e) {
+            //         e.preventDefault();
+            //
+            //              if (!validateForm()) {
+            //                return;
+            //          }
+            //
+            //              const formData = getFormData();
+            //            const phoneNumber = '917381'; // Replace with actual WhatsApp number if needed
+            //          const message = `Hi, I'm ${formData.name}. I want to discuss a ${formData.project} project with a budget of ${formData.budget}. Here's more info: ${formData.message}. My email is ${formData.email}${formData.phone ? ' and phone is ' + formData.phone : ''}.`;
+
+            //    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            //    window.open(whatsappLink, '_blank');
+            // 
+            //       showStatus('WhatsApp chat opened successfully!', true);
+            // });
+
+
+
+
+
+            // Buy Me a Coffee button click handler
+            const coffeeBtn = document.getElementById('coffeeBtn');
+            coffeeBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open('https://buymeacoffee.com/cwa153', '_blank');
+                showStatus('Thank you for your support!', true);
+            });
+
+
+
+            // Animate form elements sequentially
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach((group, index) => {
+                group.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+
+
+        // Disable Right Click
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        // Disable Common Dev Tools Shortcuts
+        document.addEventListener('keydown', function (e) {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+                (e.ctrlKey && e.key === 'U')
+            ) {
+                e.preventDefault();
+            }
+        });
+
+        // Obfuscation Example (basic)
+        (function () {
+            const msg = "Thanks for your interest!";
+            console.log(msg);
+        })();
+
+    </script>
+</body>
+
+</html>
