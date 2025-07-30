@@ -199,3 +199,37 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
       const msg = "Thanks for your interest!";
       console.log(msg);
     })();
+
+
+document.addEventListener('DOMContentLoaded', function() {
+            // Try to play audio automatically (may be blocked by browser policy)
+            const audio = document.getElementById('backgroundMusic');
+            
+            // Function to handle autoplay
+            function playAudio() {
+                audio.volume = 0.3; // Set volume to 30% to avoid being too loud
+                const promise = audio.play();
+                
+                if (promise !== undefined) {
+                    promise.catch(error => {
+                        // Autoplay was prevented, show a button to start
+                        console.log('Autoplay prevented:', error);
+                        
+                        // In this case, since we don't want any UI, we'll just try again
+                        // after a user interaction elsewhere on the page
+                        document.body.addEventListener('click', function() {
+                            audio.play().catch(e => console.log('Still prevented:', e));
+                        }, { once: true });
+                    });
+                }
+            }
+            
+            // Try to play when the page loads
+            playAudio();
+            
+            // For iOS devices, we need to trigger play on touch
+            document.body.addEventListener('touchstart', function() {
+                playAudio();
+            }, { once: true });
+        });
+
